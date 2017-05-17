@@ -82,14 +82,19 @@ def parse_xlsx
 
     old_key = android_key
 
-    if new_key || old_key
-      next
-    end
+    next if !new_key || !old_key || new_key.empty? || old_key.empty? || new_key == '#N/A' || old_key == '#N/A'
 
+    # 去掉空格之后再判断是否==
     old_key.strip!
     new_key.strip!
-    if old_key != new_key && ios_key_value != '#N/A' && new_key_value != '#N/A'
+
+    new_key.gsub(/([a-zA-Z0-9% ]*[a-zA-Z0-9%])/) { |m| puts "#{$1}" }
+
+    puts '111'
+
+    if old_key != new_key
       count += 1
+      # puts new_key
       # process_i18n_file(ios_key_value, new_key_value)
     end
   end

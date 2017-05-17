@@ -1,4 +1,0 @@
-zhudongfang
-chudongfang
-
-LPLocalizedString(@"search_key", @"search")
